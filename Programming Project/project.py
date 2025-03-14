@@ -82,7 +82,7 @@ def print_quiz(quiz_number):
     
     print(my_quizes[quiz_number])
 
-def print_correct_answer(quiz_number):
+def return_correct_answer(quiz_number):
     correct_answers = {
         1: "b",
         2: "c",
@@ -99,18 +99,19 @@ def print_correct_answer(quiz_number):
     return correct_answers[quiz_number]
 
 def play_quiz(quiz_number):
+    number_of_correct = 0
     
-    while quiz_number < 10:
+    while quiz_number <= 3:
         print_quiz(quiz_number)
         user_answer = input("Enter your answer: ")
-        print()
+        print("--------------------------------------\n")   
+
+        correct_answer = return_correct_answer(quiz_number)
         
-        correct_answer = print_correct_answer(quiz_number)
-        number_of_correct = 0
         
         if user_answer == correct_answer:
             #print("Correct!🥳")
-            print_quiz(quiz_number + 1)
+            quiz_number = quiz_number + 1
             number_of_correct += 1
         # else: 
         #     print_quiz(quiz_number)
@@ -119,11 +120,10 @@ def play_quiz(quiz_number):
         #     print_quiz(quiz_number)
 
 # At the end of the quiz
-    if quiz_number == 10:
+    if quiz_number == 4:
         display_result(number_of_correct)
         display_incorrect_answers()
-        
-        """TODO: Fix play_quiz() logic"""
+                
         
         """TODO: Finish display_incorrect_answer()
             At the end of the quiz, the program should display: 
@@ -133,7 +133,11 @@ def play_quiz(quiz_number):
                     """
 
 def display_result(number_of_correct):
-    print("Number of correct: " + number_of_correct)
+    print()
+    print("***********Quiz ended!**********")
+    print("***********YOUR RESULT**********")
+    print()
+    print("Number of correct: " + str(number_of_correct))
     
 
 def display_incorrect_answers():
