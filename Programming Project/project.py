@@ -124,13 +124,6 @@ def play_quiz(quiz_number):
         display_result(number_of_correct)
         display_incorrect_answers()
                 
-        
-        """TODO: Finish display_incorrect_answer()
-            At the end of the quiz, the program should display: 
-                    - The question itself.
-                    - The user's incorrect answer.
-                    - The correct answer.
-                    """
 
 def display_result(number_of_correct):
     print()
@@ -142,6 +135,13 @@ def display_result(number_of_correct):
 
 def display_incorrect_answers():
     pass
+
+"""TODO: Finish display_incorrect_answer()
+    At the end of the quiz, the program should display: 
+            - The question itself.
+            - The user's incorrect answer.
+            - The correct answer.
+            """
     
     
 def main():
