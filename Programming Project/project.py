@@ -79,7 +79,6 @@ def print_quiz(quiz_number):
                         + "c. Stavanger\n"
                         + "d. Tromsø\n"                        
         }
-    
     print(my_quizes[quiz_number])
 
 def return_correct_answer(quiz_number):
@@ -100,19 +99,31 @@ def return_correct_answer(quiz_number):
 
 def play_quiz(quiz_number):
     number_of_correct = 0
+    number_of_wrong = 0
     
-    while quiz_number <= 3:
+    # lists to hold the the question itself, the correct answer and the users wrong answer
+    question_answerd_wrong = []
+    correction = []
+    user_wrong_answer = []
+    
+    while quiz_number <= 10:
         print_quiz(quiz_number)
         user_answer = input("Enter your answer: ")
         print("--------------------------------------\n")   
 
         correct_answer = return_correct_answer(quiz_number)
         
-        
         if user_answer == correct_answer:
             #print("Correct!🥳")
             quiz_number = quiz_number + 1
             number_of_correct += 1
+        else:
+            number_of_wrong += 1
+            correction.append(correct_answer)
+            question_answerd_wrong.append(quiz_number)
+            user_wrong_answer.append(user_answer)
+            
+            quiz_number = quiz_number + 1
         # else: 
         #     print_quiz(quiz_number)
         #     print("Your Answer:" + user_answer)
@@ -120,9 +131,9 @@ def play_quiz(quiz_number):
         #     print_quiz(quiz_number)
 
 # At the end of the quiz
-    if quiz_number == 4:
+    if quiz_number == 11:
         display_result(number_of_correct)
-        display_incorrect_answers()
+        display_incorrect_answers(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction)
                 
 
 def display_result(number_of_correct):
@@ -132,8 +143,17 @@ def display_result(number_of_correct):
     print()
     print("Number of correct: " + str(number_of_correct))
     
+    
+    
 
-def display_incorrect_answers():
+def display_incorrect_answers(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction):
+    i = 0
+    
+    if(number_of_wrong>0):
+        print(f"Number of wrong answers: {number_of_wrong}\n")
+        while i < number_of_wrong:
+            print(f"You got question {question_answerd_wrong[i]}. Your answer was {user_wrong_answer[i]}, the correct answer is {correction[i]}")
+            i += 1
     pass
 
 """TODO: Finish display_incorrect_answer()
