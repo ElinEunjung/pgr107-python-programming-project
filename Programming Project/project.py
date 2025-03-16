@@ -17,7 +17,7 @@ def login():
 def login_info(login_credentials): 
     LOGIN_CREDENTIALS = {"PGR107" : "Python" }
     if login_credentials == LOGIN_CREDENTIALS:
-        print("***login successful***")
+        print("***Login successful***")
         print()
         play_quiz(1)
     else:
@@ -32,7 +32,7 @@ def print_quiz(quiz_number):
                            + "a. Bergen\n" 
                            + "b. Oslo\n"
                            + "c. Stavanger\n"
-                           + "c. Trondheim\n" ,
+                           + "d. Trondheim\n" ,
         2: "Q2. What is the currency of Norway?\n"
                       + "a. Euro\n"
                       + "b. Pound\n"
@@ -106,7 +106,7 @@ def play_quiz(quiz_number):
     correction = []
     user_wrong_answer = []
     
-    while quiz_number <= 10:
+    while quiz_number <= 3:
         print_quiz(quiz_number)
         user_answer = input("Enter your answer: ")
         print("--------------------------------------\n")   
@@ -114,7 +114,6 @@ def play_quiz(quiz_number):
         correct_answer = return_correct_answer(quiz_number)
         
         if user_answer == correct_answer:
-            #print("Correct!🥳")
             quiz_number = quiz_number + 1
             number_of_correct += 1
         else:
@@ -124,44 +123,36 @@ def play_quiz(quiz_number):
             user_wrong_answer.append(user_answer)
             
             quiz_number = quiz_number + 1
-        # else: 
-        #     print_quiz(quiz_number)
-        #     print("Your Answer:" + user_answer)
-        #     print("Correct_Answer:" + correct_answer)
-        #     print_quiz(quiz_number)
+      
 
 # At the end of the quiz
-    if quiz_number == 11:
-        display_result(number_of_correct)
-        display_incorrect_answers(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction)
+    if quiz_number == 4:
+        display_number_of_correct_and_incorrect_answer(number_of_correct, number_of_wrong)
+        display_question_and_incorrect_answer_and_correct_answer(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction)
                 
 
-def display_result(number_of_correct):
+def display_number_of_correct_and_incorrect_answer(number_of_correct, number_of_wrong):
     print()
     print("***********Quiz ended!**********")
     print("***********YOUR RESULT**********")
     print()
     print("Number of correct: " + str(number_of_correct))
+    print("Number of incorrect: " + str(number_of_wrong))
+    print()
     
     
     
 
-def display_incorrect_answers(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction):
+def display_question_and_incorrect_answer_and_correct_answer(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction):
     i = 0
     
-    if(number_of_wrong>0):
-        print(f"Number of wrong answers: {number_of_wrong}\n")
-        while i < number_of_wrong:
-            print(f"You got question {question_answerd_wrong[i]}. Your answer was {user_wrong_answer[i]}, the correct answer is {correction[i]}")
-            i += 1
-    pass
-
-"""TODO: Finish display_incorrect_answer()
-    At the end of the quiz, the program should display: 
-            - The question itself.
-            - The user's incorrect answer.
-            - The correct answer.
-            """
+    while i < number_of_wrong:
+        print("*****For your incorrect answer*****")
+        # print(f"You got question {question_answerd_wrong[i]}.\n" )
+        print_quiz(question_answerd_wrong[i])
+        print(f"Your answer was {user_wrong_answer[i]}, the correct answer is {correction[i]}.\n")
+        i += 1
+    
     
     
 def main():
