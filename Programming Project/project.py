@@ -127,11 +127,11 @@ def play_quiz(quiz_number):
 
 # At the end of the quiz
     if quiz_number == 11:
-        display_number_of_correct_and_incorrect_answer(number_of_correct, number_of_wrong)
+        display_number_of_correct_and_incorrect_answers(number_of_correct, number_of_wrong)
         display_question_and_incorrect_answer_and_correct_answer(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction)
                 
 
-def display_number_of_correct_and_incorrect_answer(number_of_correct, number_of_wrong):
+def display_number_of_correct_and_incorrect_answers(number_of_correct, number_of_wrong):
     print()
     print("***********Quiz ended!**********")
     print("***********YOUR RESULT**********")
