@@ -147,11 +147,17 @@ def display_result(number_of_correct):
     
 
 def display_incorrect_answers(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction):
-    print(f"Number of wrong answers: {number_of_wrong}")
+    i = 0
+    
+    if(number_of_wrong>0):
+        print(f"Number of wrong answers: {number_of_wrong}\n")
+        while i < number_of_wrong:
+            print(f"You got question {question_answerd_wrong[i]}. Your answer was {user_wrong_answer[i]}, the correct answer is {correction[i]}")
+            i += 1
     pass
 
 """TODO: Finish display_incorrect_answer()
-    At the end of the quiz, the program should display:  
+    At the end of the quiz, the program should display: 
             - The question itself.
             - The user's incorrect answer.
             - The correct answer.
