@@ -106,7 +106,7 @@ def play_quiz(quiz_number):
     correction = []
     user_wrong_answer = []
     
-    while quiz_number <= 3:
+    while quiz_number <= 10:
         print_quiz(quiz_number)
         user_answer = input("Enter your answer: ")
         print("--------------------------------------\n")   
@@ -126,7 +126,7 @@ def play_quiz(quiz_number):
       
 
 # At the end of the quiz
-    if quiz_number == 4:
+    if quiz_number == 11:
         display_number_of_correct_and_incorrect_answer(number_of_correct, number_of_wrong)
         display_question_and_incorrect_answer_and_correct_answer(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction)
                 
