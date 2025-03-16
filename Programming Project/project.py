@@ -14,25 +14,23 @@ def login():
     login_info(login_credentials)
 
 
-def login_info(login_credentials): 
-    LOGIN_CREDENTIALS = {"PGR107" : "Python" }
-    if login_credentials == LOGIN_CREDENTIALS:
-        print("***Login successful***")
-        print()
+def login_info(login_credentials):                                                                                    
+    CORRECT_LOGIN_CREDENTIALS = {"PGR107" : "Python" }
+    if login_credentials == CORRECT_LOGIN_CREDENTIALS:
+        print("***Login successful***\n")
         play_quiz(1)
     else:
-        print("***Invalid username and/or password***")
-        print()
+        print("***Invalid username and/or password***\n")
         login()
  
         
 def print_quiz(quiz_number):
     my_quizes = {
         1: "Q1. What is the capital of Norway?\n" 
-                           + "a. Bergen\n" 
-                           + "b. Oslo\n"
-                           + "c. Stavanger\n"
-                           + "d. Trondheim\n" ,
+                      + "a. Bergen\n" 
+                      + "b. Oslo\n"
+                      + "c. Stavanger\n"
+                      + "d. Trondheim\n" ,
         2: "Q2. What is the currency of Norway?\n"
                       + "a. Euro\n"
                       + "b. Pound\n"
@@ -114,7 +112,6 @@ def play_quiz(quiz_number):
         correct_answer = return_correct_answer(quiz_number)
         
         if user_answer == correct_answer:
-            quiz_number = quiz_number + 1
             number_of_correct += 1
         else:
             number_of_wrong += 1
@@ -122,28 +119,42 @@ def play_quiz(quiz_number):
             question_answerd_wrong.append(quiz_number)
             user_wrong_answer.append(user_answer)
             
-            quiz_number = quiz_number + 1
+        quiz_number = quiz_number + 1
       
 
 # At the end of the quiz
-    if quiz_number == 11:
-        display_number_of_correct_and_incorrect_answers(number_of_correct, number_of_wrong)
-        display_question_and_incorrect_answer_and_correct_answer(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction)
+    if quiz_number > 10:
+        display_number_of_correct_and_incorrect_answers(
+            number_of_correct,
+            number_of_wrong
+        )
+        
+        display_question_and_incorrect_and_correct_answers(
+            number_of_wrong,
+            question_answerd_wrong,
+            user_wrong_answer, 
+            correction
+        )
                 
 
-def display_number_of_correct_and_incorrect_answers(number_of_correct, number_of_wrong):
-    print()
-    print("***********Quiz ended!**********")
-    print("***********YOUR RESULT**********")
-    print()
-    print("Number of correct: " + str(number_of_correct))
-    print("Number of incorrect: " + str(number_of_wrong))
-    print()
+def display_number_of_correct_and_incorrect_answers(
+        number_of_correct,
+        number_of_wrong
+):
+    print("\n***********Quiz ended!**********")
+    print("***********YOUR RESULT**********\n")
+    print(f"Number of correct: {str(number_of_correct)}")
+    print(f"Number of incorrect: {str(number_of_wrong)}\n")
     
     
     
 
-def display_question_and_incorrect_answer_and_correct_answer(number_of_wrong, question_answerd_wrong, user_wrong_answer, correction):
+def display_question_and_incorrect_and_correct_answers(
+        number_of_wrong,
+        question_answerd_wrong,
+        user_wrong_answer,
+        correction
+):
     i = 0
     
     while i < number_of_wrong:
